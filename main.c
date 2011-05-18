@@ -15,26 +15,31 @@
  ** that could mess up the system like calling malloc() or free().
  */
 
+int data[20048];
+int *ptr;
+
 static int ThroughputCallback( const void *inputBuffer, void *outputBuffer,
 							  unsigned long framesPerBuffer,
 							  const PaStreamCallbackTimeInfo* timeInfo,
 							  PaStreamCallbackFlags statusFlags,
 							  void *userData, const void *packetData ) {
 	
-	float *in = (float*)packetData;
+	//float *in = (float*)packetData;
 	//float *in = (float*)inputBuffer;
 	float *out = (float*)outputBuffer;
+	int i = 0;
 	
-	if (in == NULL)  /* if input  buffer not ready, fill output buffer with 0's */
+	if (data[0] == 0)  /* if input  buffer not ready, fill output buffer with 0's */
 		while (framesPerBuffer--) {	
 			*out++ = 0;	/* left */
 			*out++ = 0; /* right */
 		}
 	
 	else while (framesPerBuffer--) {	
-		*out++ = *in++;	/* left */
-		*out++ = *in++; /* right */
+		*out++ = data[i++];	/* left */
+		*out++ = data[i++]; /* right */
 	}
+	
 	
 	return 0;
 }
@@ -45,37 +50,42 @@ void processPacket(u_char *arg, const struct pcap_pkthdr* pkthdr, const u_char *
 	//counting of the packets
 	int i=0, *counter = (int *)arg;
 	
+	
 	//printf("Packet count: %d\n", ++(*counter));
 	//printf("Received packet size: %d\n", pkthdr->len);
 	//printf("Payload:\n");
-	
+	ptr = &data[0];
 	
 	for (i=0; i<pkthdr->len; i++) {
-		if ( isprint(packet[i]) )
 			printf("%c ", packet[i]);
-		else
-			printf(". ");
+			*ptr = packet[i];
+			*ptr++;
+			//printf("%i",pkthdr->len );
+			//*data[i] = packet[i];
+		}
+		//else
+		//	printf(". ");
 		
 		
 		/*if ( (i%16 == 0 && i!=0) || i==pkthdr->len-1)
 		 printf("\n");*/
 		//*packetData = packet[i];
-    }
+    //}
 	return;
 }
 
 int main(int argc, char *argv[]) {
 	
-	int i=0, count=0;
+	int count=0;
 	pcap_t *descr = NULL;
-	char errbuf[ PCAP_ERRBUF_SIZE], *device=NULL;
+	char errbuf[ PCAP_ERRBUF_SIZE];
 	memset(errbuf,0,PCAP_ERRBUF_SIZE);
 	
 	/* PortAudio part */
 	
 	PaStream *stream;  /* declare a stream variable */
 	PaError err;  /* declare an error variable */
-	printf("PortAudio started");
+	printf("PortAudio started\n");
 	
 	/* Initialize  data for use by callback. */
 	
