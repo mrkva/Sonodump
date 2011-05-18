@@ -19,9 +19,10 @@ static int ThroughputCallback( const void *inputBuffer, void *outputBuffer,
 							  unsigned long framesPerBuffer,
 							  const PaStreamCallbackTimeInfo* timeInfo,
 							  PaStreamCallbackFlags statusFlags,
-							  void *userData ) {
+							  void *userData, const void *packetData ) {
 	
-	float *in = (float*)inputBuffer;
+	float *in = (float*)packetData;
+	//float *in = (float*)inputBuffer;
 	float *out = (float*)outputBuffer;
 	
 	if (in == NULL)  /* if input  buffer not ready, fill output buffer with 0's */
@@ -39,7 +40,7 @@ static int ThroughputCallback( const void *inputBuffer, void *outputBuffer,
 }
 
 
-void processPacket(u_char *arg, const struct pcap_pkthdr* pkthdr, const u_char * packet) {
+void processPacket(u_char *arg, const struct pcap_pkthdr* pkthdr, const u_char * packet, const void *packetData) {
 	
 	//counting of the packets
 	int i=0, *counter = (int *)arg;
@@ -58,6 +59,7 @@ void processPacket(u_char *arg, const struct pcap_pkthdr* pkthdr, const u_char *
 		
 		/*if ( (i%16 == 0 && i!=0) || i==pkthdr->len-1)
 		 printf("\n");*/
+		//*packetData = packet[i];
     }
 	return;
 }
@@ -73,8 +75,7 @@ int main(int argc, char *argv[]) {
 	
 	PaStream *stream;  /* declare a stream variable */
 	PaError err;  /* declare an error variable */
-	
-	printf("PortAudio Test\n");  /* announce what is happening */
+	printf("PortAudio started");
 	
 	/* Initialize  data for use by callback. */
 	
