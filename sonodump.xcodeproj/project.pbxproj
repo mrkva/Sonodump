@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		8DD76FAC0486AB0100D96B5E /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 08FB7796FE84155DC02AAC07 /* main.c */; settings = {ATTRIBUTES = (); }; };
 		8DD76FB00486AB0100D96B5E /* sonodump.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6A0FF2C0290799A04C91782 /* sonodump.1 */; };
-		DD6D1FBF138422B600AEA7F9 /* libportaudio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD6D1FBE138422B600AEA7F9 /* libportaudio.a */; };
+		DD1D425D13844BDB0052B029 /* libportaudio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1D425C13844BDB0052B029 /* libportaudio.a */; };
 		DD6D1FC1138422D600AEA7F9 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD6D1FC0138422D600AEA7F9 /* AudioToolbox.framework */; };
 		DD6D1FC3138422D600AEA7F9 /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD6D1FC2138422D600AEA7F9 /* AudioUnit.framework */; };
 		DD6D1FC5138422D600AEA7F9 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD6D1FC4138422D600AEA7F9 /* CoreAudio.framework */; };
@@ -34,7 +34,7 @@
 		08FB7796FE84155DC02AAC07 /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		8DD76FB20486AB0100D96B5E /* sonodump */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = sonodump; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6A0FF2C0290799A04C91782 /* sonodump.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = sonodump.1; sourceTree = "<group>"; };
-		DD6D1FBE138422B600AEA7F9 /* libportaudio.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libportaudio.a; path = include/libportaudio.a; sourceTree = "<group>"; };
+		DD1D425C13844BDB0052B029 /* libportaudio.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libportaudio.a; path = include/libportaudio.a; sourceTree = "<group>"; };
 		DD6D1FC0138422D600AEA7F9 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		DD6D1FC2138422D600AEA7F9 /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
 		DD6D1FC4138422D600AEA7F9 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
@@ -47,12 +47,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD6D1FBF138422B600AEA7F9 /* libportaudio.a in Frameworks */,
 				DD6D1FC1138422D600AEA7F9 /* AudioToolbox.framework in Frameworks */,
 				DD6D1FC3138422D600AEA7F9 /* AudioUnit.framework in Frameworks */,
 				DD6D1FC5138422D600AEA7F9 /* CoreAudio.framework in Frameworks */,
 				DD6D1FC7138422D600AEA7F9 /* CoreServices.framework in Frameworks */,
 				DD6D1FD41384230200AEA7F9 /* libpcap.1.1.1.dylib in Frameworks */,
+				DD1D425D13844BDB0052B029 /* libportaudio.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,7 +77,7 @@
 		08FB7795FE84155DC02AAC07 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				DD6D1FBE138422B600AEA7F9 /* libportaudio.a */,
+				DD1D425C13844BDB0052B029 /* libportaudio.a */,
 				08FB7796FE84155DC02AAC07 /* main.c */,
 			);
 			name = Source;

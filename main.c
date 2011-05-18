@@ -5,7 +5,7 @@
 #include "include/portaudio.h"
 
 #define MAXBYTES2CAPTURE 2048
-#define kSampleRate   (44100)
+#define kSampleRate   (11050)
 #define kFramesPerBuffer (64)
 
 /*  the CALLBACK ROUTINE FOR PRODUCING AUDIO */
@@ -15,7 +15,7 @@
  ** that could mess up the system like calling malloc() or free().
  */
 
-int data[20048];
+int data[50048];
 int *ptr;
 
 static int ThroughputCallback( const void *inputBuffer, void *outputBuffer,
@@ -36,8 +36,8 @@ static int ThroughputCallback( const void *inputBuffer, void *outputBuffer,
 		}
 	
 	else while (framesPerBuffer--) {	
-		*out++ = data[i++];	/* left */
-		*out++ = data[i++]; /* right */
+		*out++ = data[i++] * 0.001;	/* left */
+		*out++ = data[i++] * 0.001; /* right */
 	}
 	
 	

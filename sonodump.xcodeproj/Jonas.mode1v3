@@ -265,11 +265,14 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateExpansionKey</key>
 							<array>
 								<string>08FB7794FE84155DC02AAC07</string>
+								<string>08FB7795FE84155DC02AAC07</string>
 								<string>1C37FABC05509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
+									<integer>2</integer>
+									<integer>1</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -323,7 +326,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>DD1D423B138447320052B029</string>
+										<string>DD1D426313844C2E0052B029</string>
 										<key>history</key>
 										<array>
 											<string>DD1D4231138446890052B029</string>
@@ -529,8 +532,8 @@
 		<string>DD1D41F013843D1C0052B029</string>
 		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
-		<string>/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/sonodump.xcodeproj</string>
 		<string>DD6D1FB91384226700AEA7F9</string>
+		<string>/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/sonodump.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>195 124 1085 630 0 0 1280 778 </string>
@@ -625,7 +628,7 @@
 			<key>WindowToolGUID</key>
 			<string>DD6D1FB91384226700AEA7F9</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>
