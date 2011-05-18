@@ -6,7 +6,7 @@
 
 #define MAXBYTES2CAPTURE 2048
 #define kSampleRate   (11050)
-#define kFramesPerBuffer (64)
+#define kFramesPerBuffer (128)
 
 /*  the CALLBACK ROUTINE FOR PRODUCING AUDIO */
 

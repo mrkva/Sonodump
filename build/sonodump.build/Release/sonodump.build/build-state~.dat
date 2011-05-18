@@ -1,0 +1,192 @@
+Tsonodump
+v7
+r0
+t327439326.622694
+cCheck dependencies
+cCompileC build/sonodump.build/Release/sonodump.build/Objects-normal/x86_64/main.o /Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/main.c normal x86_64 c com.apple.compilers.gcc.4_2
+cCompileC build/sonodump.build/Release/sonodump.build/Objects-normal/i386/main.o /Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/main.c normal i386 c com.apple.compilers.gcc.4_2
+cLd /Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/sonodump.build/Release/sonodump.build/Objects-normal/x86_64/sonodump normal x86_64
+cLd /Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/sonodump.build/Release/sonodump.build/Objects-normal/i386/sonodump normal i386
+
+N/Developer/SDKs/MacOSX10.6.sdk
+c000000004CAA740B00000000000000EE
+t1286239243
+s238
+
+N/Developer/SDKs/MacOSX10.6.sdk/System/Library/Frameworks/AudioToolbox.framework/AudioToolbox
+c000000004D5A27900000000000025CE0
+t1297754000
+s154848
+
+N/Developer/SDKs/MacOSX10.6.sdk/System/Library/Frameworks/AudioUnit.framework/AudioUnit
+c000000004D5A27900000000000005FA8
+t1297754000
+s24488
+
+N/Developer/SDKs/MacOSX10.6.sdk/System/Library/Frameworks/CoreAudio.framework/CoreAudio
+c000000004D5A27900000000000014858
+t1297754000
+s84056
+
+N/Developer/SDKs/MacOSX10.6.sdk/System/Library/Frameworks/CoreServices.framework/CoreServices
+c000000004D5A2790000000000001A854
+t1297754000
+s108628
+
+N/Developer/SDKs/MacOSX10.6.sdk/usr/include/math.h
+c000000004A5C14A000000000000004F1
+t1247548576
+s1265
+
+N/Developer/SDKs/MacOSX10.6.sdk/usr/include/pcap.h
+c000000004B73EC950000000000000910
+t1265888405
+s2320
+
+N/Developer/SDKs/MacOSX10.6.sdk/usr/include/stdlib.h
+c000000004BBD2CE90000000000002DF5
+t1270689001
+s11765
+
+N/Developer/SDKs/MacOSX10.6.sdk/usr/include/string.h
+c000000004BBD2CE90000000000001731
+t1270689001
+s5937
+
+N/Developer/SDKs/MacOSX10.6.sdk/usr/local/lib/libpcap.1.1.1.dylib
+c000000004DD3C2EB0000000000031B48
+t1305723627
+s203592
+
+N/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/Release/sonodump
+t2
+s0
+
+N/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/Release/sonodump.dSYM
+t2
+s0
+
+N/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/sonodump.build/Release/sonodump.build/Objects-normal/i386/main.o
+t1305746525
+s8384
+
+N/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/sonodump.build/Release/sonodump.build/Objects-normal/i386/sonodump
+t2
+s0
+
+N/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/sonodump.build/Release/sonodump.build/Objects-normal/i386/sonodump.LinkFileList
+c000000004DD41C5D000000000000007B
+t1305746525
+s123
+
+N/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/sonodump.build/Release/sonodump.build/Objects-normal/x86_64/main.o
+t1305746525
+s9804
+
+N/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/sonodump.build/Release/sonodump.build/Objects-normal/x86_64/sonodump
+t1305746526
+s10104
+
+N/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/sonodump.build/Release/sonodump.build/Objects-normal/x86_64/sonodump.LinkFileList
+c000000004DD41C5D000000000000007D
+t1305746525
+s125
+
+N/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/include/libportaudio.a
+c000000004DD41444000000000007D5F0
+t1305744452
+s513520
+
+N/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/include/portaudio.h
+c0000000046BDE3D5000000000000A854
+t1186849749
+s43092
+
+N/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/main.c
+c000000004DD418130000000000000E60
+t1305745427
+s3680
+i<pcap.h>
+i<string.h>
+i<stdlib.h>
+i<math.h>
+i"include/portaudio.h"
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies327439325#327439325#0(0"0(0#1#0"8610733088#0"0#
+
+CCompileC build/sonodump.build/Release/sonodump.build/Objects-normal/i386/main.o /Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/main.c normal i386 c com.apple.compilers.gcc.4_2
+s327439325.064012
+e327439325.607873
+r1
+xCompileC
+xbuild/sonodump.build/Release/sonodump.build/Objects-normal/i386/main.o
+x/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/main.c
+xnormal
+xi386
+xc
+xcom.apple.compilers.gcc.4_2
+o/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/main.c: In function 'processPacket':
+o/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/main.c:51: warning: unused variable 'counter'
+o/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/main.c: In function 'main':
+o/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/main.c:103: warning: passing argument 7 of 'Pa_OpenDefaultStream' from incompatible pointer type
+o/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/main.c:120: warning: passing argument 3 of 'pcap_loop' from incompatible pointer type
+lSLF07#2@66"Compile /Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/main.c327439325#327439325#0(554"/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/main.c: In function 'processPacket':/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/main.c:51: warning: unused variable 'counter'/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/main.c: In function 'main':/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/main.c:103: warning: passing argument 7 of 'Pa_OpenDefaultStream' from incompatible pointer type/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/main.c:120: warning: passing argument 3 of 'pcap_loop' from incompatible pointer type3(22@25"Unused variable 'counter'327439325#89#98#0(6@58"/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/main.c327438227#51#0#51#0#19"unused variable '*'0(22@75"Passing argument 7 of 'Pa_OpenDefaultStream' from incompatible pointer type327439325#267#149#0(6@58"/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/main.c327438227#103#0#103#0#56"passing argument * of '*' from incompatible pointer type0(22@64"Passing argument 3 of 'pcap_loop' from incompatible pointer type327439325#416#138#0(6@58"/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/main.c327438227#120#0#120#0#56"passing argument * of '*' from incompatible pointer type0(0#0#58"/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/main.c8614497888#1461"    cd /Users/Jonas/Documents/Projekty/SonTCPdump/sonodump    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c -arch i386 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -mdynamic-no-pic -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -iquote /Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/sonodump.build/Release/sonodump.build/sonodump-generated-files.hmap -I/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/sonodump.build/Release/sonodump.build/sonodump-own-target-headers.hmap -I/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/sonodump.build/Release/sonodump.build/sonodump-all-target-headers.hmap -iquote /Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/sonodump.build/Release/sonodump.build/sonodump-project-headers.hmap -F/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/Release -I/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/Release/include -I/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/sonodump.build/Release/sonodump.build/DerivedSources/i386 -I/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/sonodump.build/Release/sonodump.build/DerivedSources -c /Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/main.c -o /Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/sonodump.build/Release/sonodump.build/Objects-normal/i386/main.o0#
+
+CCompileC build/sonodump.build/Release/sonodump.build/Objects-normal/x86_64/main.o /Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/main.c normal x86_64 c com.apple.compilers.gcc.4_2
+s327439325.062326
+e327439325.591667
+r1
+xCompileC
+xbuild/sonodump.build/Release/sonodump.build/Objects-normal/x86_64/main.o
+x/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/main.c
+xnormal
+xx86_64
+xc
+xcom.apple.compilers.gcc.4_2
+o/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/main.c: In function 'processPacket':
+o/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/main.c:51: warning: unused variable 'counter'
+o/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/main.c: In function 'main':
+o/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/main.c:103: warning: passing argument 7 of 'Pa_OpenDefaultStream' from incompatible pointer type
+o/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/main.c:120: warning: passing argument 3 of 'pcap_loop' from incompatible pointer type
+lSLF07#2@66"Compile /Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/main.c327439325#327439325#0(554"/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/main.c: In function 'processPacket':/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/main.c:51: warning: unused variable 'counter'/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/main.c: In function 'main':/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/main.c:103: warning: passing argument 7 of 'Pa_OpenDefaultStream' from incompatible pointer type/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/main.c:120: warning: passing argument 3 of 'pcap_loop' from incompatible pointer type3(22@25"Unused variable 'counter'327439325#89#98#0(6@58"/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/main.c327438227#51#0#51#0#19"unused variable '*'0(22@75"Passing argument 7 of 'Pa_OpenDefaultStream' from incompatible pointer type327439325#267#149#0(6@58"/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/main.c327438227#103#0#103#0#56"passing argument * of '*' from incompatible pointer type0(22@64"Passing argument 3 of 'pcap_loop' from incompatible pointer type327439325#416#138#0(6@58"/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/main.c327438227#120#0#120#0#56"passing argument * of '*' from incompatible pointer type0(0#0#58"/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/main.c8611277728#1467"    cd /Users/Jonas/Documents/Projekty/SonTCPdump/sonodump    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c -arch x86_64 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -mdynamic-no-pic -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -iquote /Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/sonodump.build/Release/sonodump.build/sonodump-generated-files.hmap -I/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/sonodump.build/Release/sonodump.build/sonodump-own-target-headers.hmap -I/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/sonodump.build/Release/sonodump.build/sonodump-all-target-headers.hmap -iquote /Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/sonodump.build/Release/sonodump.build/sonodump-project-headers.hmap -F/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/Release -I/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/Release/include -I/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/sonodump.build/Release/sonodump.build/DerivedSources/x86_64 -I/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/sonodump.build/Release/sonodump.build/DerivedSources -c /Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/main.c -o /Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/sonodump.build/Release/sonodump.build/Objects-normal/x86_64/main.o0#
+
+CCreateUniversalBinary /Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/Release/sonodump normal "x86_64 i386"
+r0
+
+CGenerateDSYMFile /Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/Release/sonodump.dSYM /Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/Release/sonodump
+r0
+
+CLd /Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/sonodump.build/Release/sonodump.build/Objects-normal/i386/sonodump normal i386
+s327439325.607962
+e327439326.622503
+r0
+xLd
+x/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/sonodump.build/Release/sonodump.build/Objects-normal/i386/sonodump
+xnormal
+xi386
+old: warning: directory '/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/Release' following -L not found
+old: warning: directory '/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/Release' following -F not found
+old: warning: in /Developer/SDKs/MacOSX10.6.sdk/usr/local/lib/libpcap.1.1.1.dylib, file was built for unsupported file format which is not the architecture being linked (i386)
+oUndefined symbols:
+o  "_pcap_loop", referenced from:
+o      _main in main.o
+o  "_pcap_open_live", referenced from:
+o      _main in main.o
+old: symbol(s) not found
+ocollect2: ld returned 1 exit status
+lSLF07#2@129"Link /Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/sonodump.build/Release/sonodump.build/Objects-normal/i386/sonodump327439325#327439326#0(597"ld: warning: directory '/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/Release' following -L not foundld: warning: directory '/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/Release' following -F not foundld: warning: in /Developer/SDKs/MacOSX10.6.sdk/usr/local/lib/libpcap.1.1.1.dylib, file was built for unsupported file format which is not the architecture being linked (i386)Undefined symbols:  "_pcap_loop", referenced from:      _main in main.o  "_pcap_open_live", referenced from:      _main in main.old: symbol(s) not foundcollect2: ld returned 1 exit status9(22@100"Directory '/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/Release' following -L not found327439326#0#114#0(6@0"327439326#0#0#0#0#0"0(22@100"Directory '/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/Release' following -F not found327439326#114#114#0(6@0"327439326#0#0#0#0#0"0(22@161"In /Developer/SDKs/MacOSX10.6.sdk/usr/local/lib/libpcap.1.1.1.dylib, file was built for unsupported file format which is not the architecture being linked (i386)327439326#228#175#0(6@0"327439326#0#0#0#0#0"0(4@30""_pcap_loop", referenced from:327439326#422#33#0(6@0"327439326#0#0#0#0#0"0(13@15"_main in main.o327439326#455#22#0(6@0"327439326#0#0#0#0#0"0(4@35""_pcap_open_live", referenced from:327439326#477#38#0(6@0"327439326#0#0#0#0#0"0(13@15"_main in main.o327439326#515#22#0(6@0"327439326#0#0#0#0#0"0(13@19"Symbol(s) not found327439326#537#24#0(6@0"327439326#0#0#0#0#0"0(13@35"Collect2: ld returned 1 exit status327439326#561#36#0(6@0"327439326#0#0#0#0#0"0(0#0#0"8611911904#798"    cd /Users/Jonas/Documents/Projekty/SonTCPdump/sonodump    setenv MACOSX_DEPLOYMENT_TARGET 10.6    /Developer/usr/bin/gcc-4.2 -arch i386 -isysroot /Developer/SDKs/MacOSX10.6.sdk -L/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/Release -L/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/include -F/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/Release -filelist /Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/sonodump.build/Release/sonodump.build/Objects-normal/i386/sonodump.LinkFileList -mmacosx-version-min=10.6 -framework AudioToolbox -framework AudioUnit -framework CoreAudio -framework CoreServices -lpcap.1.1.1 -lportaudio -o /Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/sonodump.build/Release/sonodump.build/Objects-normal/i386/sonodump1#
+
+CLd /Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/sonodump.build/Release/sonodump.build/Objects-normal/x86_64/sonodump normal x86_64
+s327439325.591786
+e327439326.358963
+r1
+xLd
+x/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/sonodump.build/Release/sonodump.build/Objects-normal/x86_64/sonodump
+xnormal
+xx86_64
+old: warning: directory '/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/Release' following -L not found
+old: warning: directory '/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/Release' following -F not found
+lSLF07#2@131"Link /Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/sonodump.build/Release/sonodump.build/Objects-normal/x86_64/sonodump327439325#327439326#0(228"ld: warning: directory '/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/Release' following -L not foundld: warning: directory '/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/Release' following -F not found2(22@100"Directory '/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/Release' following -L not found327439326#0#114#0(6@0"327439326#0#0#0#0#0"0(22@100"Directory '/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/Release' following -F not found327439326#114#114#0(6@0"327439326#0#0#0#0#0"0(0#0#0"8612726336#804"    cd /Users/Jonas/Documents/Projekty/SonTCPdump/sonodump    setenv MACOSX_DEPLOYMENT_TARGET 10.6    /Developer/usr/bin/gcc-4.2 -arch x86_64 -isysroot /Developer/SDKs/MacOSX10.6.sdk -L/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/Release -L/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/include -F/Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/Release -filelist /Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/sonodump.build/Release/sonodump.build/Objects-normal/x86_64/sonodump.LinkFileList -mmacosx-version-min=10.6 -framework AudioToolbox -framework AudioUnit -framework CoreAudio -framework CoreServices -lpcap.1.1.1 -lportaudio -o /Users/Jonas/Documents/Projekty/SonTCPdump/sonodump/build/sonodump.build/Release/sonodump.build/Objects-normal/x86_64/sonodump0#
+
