@@ -3,9 +3,10 @@
 #include <stdlib.h>
 #include <math.h> 
 #include "include/portaudio.h"
+#include <ncurses.h>
 
 #define MAXBYTES2CAPTURE 2048
-#define kSampleRate   (11050)
+#define kSampleRate   (22050)
 #define kFramesPerBuffer (128)
 
 /*  the CALLBACK ROUTINE FOR PRODUCING AUDIO */
@@ -17,15 +18,16 @@
 
 int data[50048];
 int *ptr;
+int row,col;
+bool verbose;
 
-static int ThroughputCallback( const void *inputBuffer, void *outputBuffer,
+
+static int ReadRaw( const void *inputBuffer, void *outputBuffer,
 							  unsigned long framesPerBuffer,
 							  const PaStreamCallbackTimeInfo* timeInfo,
 							  PaStreamCallbackFlags statusFlags,
 							  void *userData, const void *packetData ) {
 	
-	//float *in = (float*)packetData;
-	//float *in = (float*)inputBuffer;
 	float *out = (float*)outputBuffer;
 	int i = 0;
 	
@@ -36,6 +38,8 @@ static int ThroughputCallback( const void *inputBuffer, void *outputBuffer,
 		}
 	
 	else while (framesPerBuffer--) {	
+		/* reading data array and incrementing the step until end of the buffer */
+		/* multiplying by 0.001 because the amplitude was too high */
 		*out++ = data[i++] * 0.001;	/* left */
 		*out++ = data[i++] * 0.001; /* right */
 	}
@@ -47,47 +51,97 @@ static int ThroughputCallback( const void *inputBuffer, void *outputBuffer,
 
 void processPacket(u_char *arg, const struct pcap_pkthdr* pkthdr, const u_char * packet, const void *packetData) {
 	
-	//counting of the packets
-	int i=0, *counter = (int *)arg;
+	int i=0;
+	int x,y;
 	
-	
-	//printf("Packet count: %d\n", ++(*counter));
-	//printf("Received packet size: %d\n", pkthdr->len);
-	//printf("Payload:\n");
-	ptr = &data[0];
+	ptr = &data[0]; // pointer to the beginning of the data array, loaded when the new pcap_loop is called
 	
 	for (i=0; i<pkthdr->len; i++) {
-			printf("%c ", packet[i]);
-			*ptr = packet[i];
-			*ptr++;
-			//printf("%i",pkthdr->len );
-			//*data[i] = packet[i];
+			getyx(stdscr, y, x); // Getting of the current position on the screen
+			if ( y == (row - 1) ) {  // If is it at the end of the window, jump to beginning
+				move(0,0);
+			}
+			printw("%c", packet[i]); // Print the packet value at i
+			refresh(); 
+			*ptr = packet[i]; // Write down the packet value at i to data array for PortAudio
+			*ptr++; // Increase the pointer to next field in data array
 		}
-		//else
-		//	printf(". ");
-		
-		
-		/*if ( (i%16 == 0 && i!=0) || i==pkthdr->len-1)
-		 printf("\n");*/
-		//*packetData = packet[i];
-    //}
 	return;
 }
 
 int main(int argc, char *argv[]) {
 	
-	int count=0;
+	int count = 0, SampleRate;
+	
+	/* pcap bookkeeping */
 	pcap_t *descr = NULL;
 	char errbuf[ PCAP_ERRBUF_SIZE];
 	memset(errbuf,0,PCAP_ERRBUF_SIZE);
 	
-	/* PortAudio part */
 	
+	/* portaudio definitions */
 	PaStream *stream;  /* declare a stream variable */
 	PaError err;  /* declare an error variable */
-	printf("PortAudio started\n");
 	
-	/* Initialize  data for use by callback. */
+	/* ncurses startup */
+	initscr();
+	
+	getmaxyx(stdscr, row, col);  
+	
+	////////////
+	/* Dialog */
+	////////////
+	
+	/* Check if user has root privileges necessary for sniffing */
+	if(geteuid() != 0)
+	{
+		
+		endwin();
+		printf("Sorry, root privileges are required. Use 'sudo ./sonodump <interface>'.\n\n");
+		exit(1);
+	}
+	
+	printw("Welcome to Sonodump\n\n");
+	
+	/* In case no interface was selected */
+	if (argc != 2) {
+		endwin();
+		printf("Please define an interface, which you want to listen to: sonodump <interface>\n");
+		printf("List of the interfaces can be found using ifconfig command.\nUsually, en0 is LAN (cable) interface, and en1 is wireless.\n");
+		exit(1);
+	}
+	
+	printw("Opening device %s\n", argv[1]);
+	
+	/* Selection of the sampling rate */
+	printw("Sampling rate (press any key for default - 22050Hz): ");
+	scanw("%d\n",&SampleRate);
+	
+	if (SampleRate < 1) {
+		SampleRate = kSampleRate;
+	}
+	
+	refresh();
+	
+	/* Unfinished part about verbose output */
+	
+	/* printw("Verbose output? It may affect performance. (Y/N): ");
+	scanf("%c\n",&anwser);
+	if (anwser == "y" || anwser == "Y") {
+		verbose = TRUE;
+	} else {
+		if (anwser == "n" || anwser == "N") {
+			verbose = FALSE;
+		} else {
+			printw("Wrong anwser.\n");
+			exit(1);
+		}
+	}	
+	refresh(); */
+	
+	///////////////
+	/* PortAudio */
+	///////////////
 	
 	/* Initialize library before making any other calls. */
 	err = Pa_Initialize();
@@ -98,29 +152,34 @@ int main(int argc, char *argv[]) {
 							   &stream,
 							   2,              /* 2 input channels */			2,              /* stereo output */
 							   paFloat32,      /* 32 bit floating point output */
-							   kSampleRate,
-							   kFramesPerBuffer,            /* frames per buffer */			ThroughputCallback,  /* pointer to the callback function */
+							   SampleRate,
+							   kFramesPerBuffer,            /* frames per buffer */			ReadRaw,  /* pointer to the callback function */
 							   NULL );
 	if( err != paNoError ) goto error; /* if error when opening stream, go to error (label) */
 	
 	err = Pa_StartStream( stream );  /* start stream */
 	if( err != paNoError ) goto error; /* if error starting, go to error (label) */
 	
-	printf("Welcome to Sonodump");
+	/* Everything went better than expected */
+	printw("Audio started. Press any key when you're ready.\n");
+	refresh(); 
 	
-	if (argc != 2) {
-		printf("Please define an interface to listen to: SonDump <interface>");
-		exit(1);
-	}
+	/* Wait for any key to start */
+	getchar();
 	
-	printf("Opening device %s\n", argv[1]);
+	//////////
+	/* pcap */
+	//////////
 	
+	/* Opening the defined device */
 	descr = pcap_open_live(argv[1], MAXBYTES2CAPTURE,1, 512, errbuf);
 	
+	/* Looping the reading from network card to kernel space */
 	pcap_loop(descr, -1, processPacket, (u_char *)&count);
 	
+	
+	/* Terminating and Error */
 	Pa_Terminate(); /* terminate PortAudio */
-	printf("Test finished.\n");
 	return err;  /* normal return for this function */
 	
 error:
@@ -129,6 +188,9 @@ error:
 	fprintf( stderr, "Error number: %d\n", err );
 	fprintf( stderr, "Error message: %s\n", Pa_GetErrorText( err ) );
 	return err;
+	
+	/* Closing of the window */
+	endwin();
 	
 	return 0;
 }
