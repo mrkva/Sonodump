@@ -1,9 +1,11 @@
 #include <pcap.h>
 #include <string.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include <math.h> 
 #include "include/portaudio.h"
 #include <ncurses.h>
+#include <signal.h>
 
 #define MAXBYTES2CAPTURE 2048
 #define kSampleRate   (22050)
@@ -16,7 +18,7 @@
  ** that could mess up the system like calling malloc() or free().
  */
 
-int data[50048];
+int data[150048];
 int *ptr;
 int row,col;
 bool verbose;
@@ -69,6 +71,24 @@ void processPacket(u_char *arg, const struct pcap_pkthdr* pkthdr, const u_char *
 	return;
 }
 
+void processPacketNonVerbose(u_char *arg, const struct pcap_pkthdr* pkthdr, const u_char * packet, const void *packetData) {
+	
+	int i=0;
+	
+	ptr = &data[0]; // pointer to the beginning of the data array, loaded when the new pcap_loop is called
+	
+	for (i=0; i<pkthdr->len; i++) {
+		*ptr = packet[i]; // Write down the packet value at i to data array for PortAudio
+		*ptr++; // Increase the pointer to next field in data array
+	}
+	return;
+}
+
+void resize(int dummy) {
+	getmaxyx(stdscr, row, col);
+	resizeterm(row, col);
+}
+
 int main(int argc, char *argv[]) {
 	
 	int count = 0, SampleRate;
@@ -86,7 +106,9 @@ int main(int argc, char *argv[]) {
 	/* ncurses startup */
 	initscr();
 	
-	getmaxyx(stdscr, row, col);  
+	getmaxyx(stdscr, row, col);
+	signal(SIGWINCH, resize);
+	
 	
 	////////////
 	/* Dialog */
@@ -95,7 +117,6 @@ int main(int argc, char *argv[]) {
 	/* Check if user has root privileges necessary for sniffing */
 	if(geteuid() != 0)
 	{
-		
 		endwin();
 		printf("Sorry, root privileges are required. Use 'sudo ./sonodump <interface>'.\n\n");
 		exit(1);
@@ -103,15 +124,32 @@ int main(int argc, char *argv[]) {
 	
 	printw("Welcome to Sonodump\n\n");
 	
+	//////////////////////////
+	/* pcap interface check */
+	//////////////////////////
+	
 	/* In case no interface was selected */
-	if (argc != 2) {
+	if (argc < 2) {
 		endwin();
 		printf("Please define an interface, which you want to listen to: sonodump <interface>\n");
 		printf("List of the interfaces can be found using ifconfig command.\nUsually, en0 is LAN (cable) interface, and en1 is wireless.\n");
 		exit(1);
 	}
 	
+	/* Opening the defined device */
+	
+	descr = pcap_open_live(argv[1], MAXBYTES2CAPTURE,1, 512, errbuf);
+	
+	/* If the device doesn't exist */
+	if (descr == NULL) {
+		endwin();
+		printf("Error: Probably you have selected unexisting device.\n\n");
+		exit(1);
+	}
+	
 	printw("Opening device %s\n", argv[1]);
+	
+	////////////////////////////////////
 	
 	/* Selection of the sampling rate */
 	printw("Sampling rate (press any key for default - 22050Hz): ");
@@ -171,12 +209,15 @@ int main(int argc, char *argv[]) {
 	/* pcap */
 	//////////
 	
-	/* Opening the defined device */
-	descr = pcap_open_live(argv[1], MAXBYTES2CAPTURE,1, 512, errbuf);
-	
 	/* Looping the reading from network card to kernel space */
-	pcap_loop(descr, -1, processPacket, (u_char *)&count);
-	
+	if ( (argc>2) && (!strcmp(argv[2], "-s")) ) {
+		printw("Working in terminal-silent mode.\n");
+		refresh();
+		pcap_loop(descr, -1, processPacketNonVerbose, (u_char *)&count);
+	} else {
+		refresh();
+		pcap_loop(descr, -1, processPacket, (u_char *)&count);
+	}
 	
 	/* Terminating and Error */
 	Pa_Terminate(); /* terminate PortAudio */
