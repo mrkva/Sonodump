@@ -21,7 +21,6 @@
 int data[150048];
 int *ptr;
 int row,col;
-bool verbose;
 
 
 static int ReadRaw( const void *inputBuffer, void *outputBuffer,
@@ -42,8 +41,11 @@ static int ReadRaw( const void *inputBuffer, void *outputBuffer,
 	else while (framesPerBuffer--) {	
 		/* reading data array and incrementing the step until end of the buffer */
 		/* multiplying by 0.001 because the amplitude was too high */
-		*out++ = data[i++] * 0.001;	/* left */
-		*out++ = data[i++] * 0.001; /* right */
+		if ((float) *ptr > 100) (float) *ptr * 0.0001;
+		if ((float) *ptr > 10) (float) *ptr * 0.001;
+		if ((float) *ptr > 1) (float) *ptr * 0.01;
+		*out++ = (float) *ptr++ * 0.01;	/* left */
+		*out++ = (float) *ptr++ * 0.01; /* right */
 	}
 	
 	
