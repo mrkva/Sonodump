@@ -1,0 +1,12 @@
+Sonodump
+network sonification at your service
+
+usage:
+
+$ sudo ./sonodump <interface>
+
+e.g.
+
+$ sudo ./sonodump en1
+
+(wireless interface)

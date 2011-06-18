@@ -9,7 +9,7 @@
 
 #define MAXBYTES2CAPTURE 2048
 #define kSampleRate   (22050)
-#define kFramesPerBuffer (128)
+#define kFramesPerBuffer (256)
 
 /*  the CALLBACK ROUTINE FOR PRODUCING AUDIO */
 
@@ -27,31 +27,34 @@ static int ReadRaw( const void *inputBuffer, void *outputBuffer,
 							  unsigned long framesPerBuffer,
 							  const PaStreamCallbackTimeInfo* timeInfo,
 							  PaStreamCallbackFlags statusFlags,
-							  void *userData, const void *packetData ) {
+							  void *userData ) {
 	
 	float *out = (float*)outputBuffer;
-	int i = 0;
 	
 	if (data[0] == 0)  /* if input  buffer not ready, fill output buffer with 0's */
 		while (framesPerBuffer--) {	
-			*out++ = 0;	/* left */
-			*out++ = 0; /* right */
+			*out++ = 0;		/* left */
+			*out++ = 0;     /* right */
 		}
 	
 	else while (framesPerBuffer--) {	
+		/* Printing the values for testing */
+		//printw("%.2f  ",*ptr * 0.001);
+		
 		/* reading data array and incrementing the step until end of the buffer */
-		/* multiplying by 0.001 because the amplitude was too high */
-		if ((float) *ptr > 100) (float) *ptr * 0.0001;
-		if ((float) *ptr > 10) (float) *ptr * 0.001;
-		if ((float) *ptr > 1) (float) *ptr * 0.01;
-		*out++ = (float) *ptr++ * 0.01;	/* left */
-		*out++ = (float) *ptr++ * 0.01; /* right */
+		*out++ = ( (float) *ptr++ * 0.001 );	/* left */
+		*out++ = ( (float) *ptr++ * 0.001 ); /* right */
 	}
 	
 	
 	return 0;
 }
 
+void resize(int dummy) {
+	getmaxyx(stdscr, row, col);
+	LINES = row;
+	COLS = col;
+}
 
 void processPacket(u_char *arg, const struct pcap_pkthdr* pkthdr, const u_char * packet, const void *packetData) {
 	
@@ -62,7 +65,7 @@ void processPacket(u_char *arg, const struct pcap_pkthdr* pkthdr, const u_char *
 	
 	for (i=0; i<pkthdr->len; i++) {
 			getyx(stdscr, y, x); // Getting of the current position on the screen
-			if ( y == (row - 1) ) {  // If is it at the end of the window, jump to beginning
+			if ( y == (LINES - 1) ) {  // If is it at the end of the window, jump to beginning
 				move(0,0);
 			}
 			printw("%c", packet[i]); // Print the packet value at i
@@ -71,6 +74,7 @@ void processPacket(u_char *arg, const struct pcap_pkthdr* pkthdr, const u_char *
 			*ptr++; // Increase the pointer to next field in data array
 		}
 	return;
+	signal(SIGWINCH, resize);
 }
 
 void processPacketNonVerbose(u_char *arg, const struct pcap_pkthdr* pkthdr, const u_char * packet, const void *packetData) {
@@ -80,16 +84,15 @@ void processPacketNonVerbose(u_char *arg, const struct pcap_pkthdr* pkthdr, cons
 	ptr = &data[0]; // pointer to the beginning of the data array, loaded when the new pcap_loop is called
 	
 	for (i=0; i<pkthdr->len; i++) {
+		refresh();
 		*ptr = packet[i]; // Write down the packet value at i to data array for PortAudio
 		*ptr++; // Increase the pointer to next field in data array
 	}
 	return;
+	signal(SIGWINCH, resize);
 }
 
-void resize(int dummy) {
-	getmaxyx(stdscr, row, col);
-	resizeterm(row, col);
-}
+
 
 int main(int argc, char *argv[]) {
 	
@@ -109,7 +112,7 @@ int main(int argc, char *argv[]) {
 	initscr();
 	
 	getmaxyx(stdscr, row, col);
-	signal(SIGWINCH, resize);
+	
 	
 	
 	////////////
@@ -157,27 +160,11 @@ int main(int argc, char *argv[]) {
 	printw("Sampling rate (press any key for default - 22050Hz): ");
 	scanw("%d\n",&SampleRate);
 	
-	if (SampleRate < 1) {
+	if ((int) SampleRate < 1) {
 		SampleRate = kSampleRate;
 	}
 	
 	refresh();
-	
-	/* Unfinished part about verbose output */
-	
-	/* printw("Verbose output? It may affect performance. (Y/N): ");
-	scanf("%c\n",&anwser);
-	if (anwser == "y" || anwser == "Y") {
-		verbose = TRUE;
-	} else {
-		if (anwser == "n" || anwser == "N") {
-			verbose = FALSE;
-		} else {
-			printw("Wrong anwser.\n");
-			exit(1);
-		}
-	}	
-	refresh(); */
 	
 	///////////////
 	/* PortAudio */
@@ -212,6 +199,7 @@ int main(int argc, char *argv[]) {
 	//////////
 	
 	/* Looping the reading from network card to kernel space */
+	/* Checking if "-s", non-verbose mode was selected */
 	if ( (argc>2) && (!strcmp(argv[2], "-s")) ) {
 		printw("Working in terminal-silent mode.\n");
 		refresh();

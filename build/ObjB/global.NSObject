@@ -1,0 +1,8 @@
+
+' The following event sub is automatically called when your app starts.
+' Why? The global.NSObject is part of the MainMenu.nib file, which 
+' is automatically loaded and created during start up. After that its event sub AwakeFromNib() is executed.
+
+Event AwakeFromNib()
+  Alert("AwakeFromNib")
+End Event

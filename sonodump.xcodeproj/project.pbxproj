@@ -19,6 +19,17 @@
 		DD6D1FC5138422D600AEA7F9 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD6D1FC4138422D600AEA7F9 /* CoreAudio.framework */; };
 		DD6D1FC7138422D600AEA7F9 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD6D1FC6138422D600AEA7F9 /* CoreServices.framework */; };
 		DD6D1FD41384230200AEA7F9 /* libpcap.1.1.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DD6D1FD31384230200AEA7F9 /* libpcap.1.1.1.dylib */; };
+		DD739708138871BD00E80F51 /* libportaudio.2.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD1D42741384545C0052B029 /* libportaudio.2.dylib */; };
+		DD739709138871BD00E80F51 /* AudioToolbox.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD6D1FC0138422D600AEA7F9 /* AudioToolbox.framework */; };
+		DD73970A138871BD00E80F51 /* AudioUnit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD6D1FC2138422D600AEA7F9 /* AudioUnit.framework */; };
+		DD73970B138871BD00E80F51 /* CoreAudio.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD6D1FC4138422D600AEA7F9 /* CoreAudio.framework */; };
+		DD73970C138871BD00E80F51 /* CoreServices.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD6D1FC6138422D600AEA7F9 /* CoreServices.framework */; };
+		DD73970D138871BD00E80F51 /* libpcap.1.1.1.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD6D1FD31384230200AEA7F9 /* libpcap.1.1.1.dylib */; };
+		DD73970E138871BD00E80F51 /* libportaudio.a in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD1D425C13844BDB0052B029 /* libportaudio.a */; };
+		DD73970F138871BD00E80F51 /* libportaudio.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD1D42751384545C0052B029 /* libportaudio.dylib */; };
+		DD739710138871BD00E80F51 /* libpcap.1.1.1.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD1D427A138454910052B029 /* libpcap.1.1.1.dylib */; };
+		DD739711138871BD00E80F51 /* libpcap.a in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD1D427B138454910052B029 /* libpcap.a */; };
+		DD90C7461384632E007E0ADA /* libncurses.5.4.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DD90C7451384632E007E0ADA /* libncurses.5.4.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,18 +39,19 @@
 			dstPath = /usr/share/man/man1/;
 			dstSubfolderSpec = 0;
 			files = (
+				DD739708138871BD00E80F51 /* libportaudio.2.dylib in CopyFiles */,
+				DD739709138871BD00E80F51 /* AudioToolbox.framework in CopyFiles */,
+				DD73970A138871BD00E80F51 /* AudioUnit.framework in CopyFiles */,
+				DD73970B138871BD00E80F51 /* CoreAudio.framework in CopyFiles */,
+				DD73970C138871BD00E80F51 /* CoreServices.framework in CopyFiles */,
+				DD73970D138871BD00E80F51 /* libpcap.1.1.1.dylib in CopyFiles */,
+				DD73970E138871BD00E80F51 /* libportaudio.a in CopyFiles */,
+				DD73970F138871BD00E80F51 /* libportaudio.dylib in CopyFiles */,
+				DD739710138871BD00E80F51 /* libpcap.1.1.1.dylib in CopyFiles */,
+				DD739711138871BD00E80F51 /* libpcap.a in CopyFiles */,
 				8DD76FB00486AB0100D96B5E /* sonodump.1 in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 1;
-		};
-		DD1D4270138453F80052B029 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = lib;
-			dstSubfolderSpec = 7;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -57,6 +69,7 @@
 		DD6D1FC4138422D600AEA7F9 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		DD6D1FC6138422D600AEA7F9 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		DD6D1FD31384230200AEA7F9 /* libpcap.1.1.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpcap.1.1.1.dylib; path = usr/local/lib/libpcap.1.1.1.dylib; sourceTree = SDKROOT; };
+		DD90C7451384632E007E0ADA /* libncurses.5.4.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libncurses.5.4.dylib; path = usr/lib/libncurses.5.4.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,16 +77,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD1D42761384545C0052B029 /* libportaudio.2.dylib in Frameworks */,
 				DD6D1FC1138422D600AEA7F9 /* AudioToolbox.framework in Frameworks */,
 				DD6D1FC3138422D600AEA7F9 /* AudioUnit.framework in Frameworks */,
 				DD6D1FC5138422D600AEA7F9 /* CoreAudio.framework in Frameworks */,
 				DD6D1FC7138422D600AEA7F9 /* CoreServices.framework in Frameworks */,
 				DD6D1FD41384230200AEA7F9 /* libpcap.1.1.1.dylib in Frameworks */,
 				DD1D425D13844BDB0052B029 /* libportaudio.a in Frameworks */,
-				DD1D42761384545C0052B029 /* libportaudio.2.dylib in Frameworks */,
 				DD1D42771384545C0052B029 /* libportaudio.dylib in Frameworks */,
 				DD1D427C138454910052B029 /* libpcap.1.1.1.dylib in Frameworks */,
 				DD1D427D138454910052B029 /* libpcap.a in Frameworks */,
+				DD90C7461384632E007E0ADA /* libncurses.5.4.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +109,7 @@
 				DD6D1FC4138422D600AEA7F9 /* CoreAudio.framework */,
 				DD6D1FC6138422D600AEA7F9 /* CoreServices.framework */,
 				DD6D1FD31384230200AEA7F9 /* libpcap.1.1.1.dylib */,
+				DD90C7451384632E007E0ADA /* libncurses.5.4.dylib */,
 			);
 			name = sonodump;
 			sourceTree = "<group>";
@@ -134,7 +149,6 @@
 				8DD76FAB0486AB0100D96B5E /* Sources */,
 				8DD76FAD0486AB0100D96B5E /* Frameworks */,
 				8DD76FAF0486AB0100D96B5E /* CopyFiles */,
-				DD1D4270138453F80052B029 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -206,12 +220,12 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = "@executable_path/lib";
 				GCC_MODEL_TUNING = G5;
 				INSTALL_PATH = /usr/local/bin;
 				LIBRARY_SEARCH_PATHS = (
+					"@executable_path/lib",
 					"$(inherited)",
-					"\"$(SRCROOT)/include\"",
-					"\"$(SRCROOT)/../../../../Downloads/libpcap-1.1.1\"",
 				);
 				PRODUCT_NAME = sonodump;
 			};
@@ -238,6 +252,8 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INSTALL_PATH = "@rpath";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/lib";
 				PREBINDING = NO;
 				SDKROOT = macosx10.6;
 			};
